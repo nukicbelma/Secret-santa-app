@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using secretsantaapp.Model.Models;
+using secretsantaapp.Model.Requests;
 using secretsantaapp.Services;
 using System;
 using System.Collections.Generic;
@@ -29,11 +30,11 @@ namespace secretsantaapp.Controllers
         //    return _service.Authenticiraj(username, password);
         //}
 
-        //[HttpGet]
-        //public List<Users> Get([FromQuery] UsersSearchRequest request)
-        //{
-        //    return _service.Get(request);
-        //}
+        [HttpGet]
+        public List<Users> Get([FromQuery] UsersSearchRequest request)
+        {
+            return _service.Get(request);
+        }
 
         //[Authorize(Roles = "Admin")]
         //[HttpPut("{id}")]

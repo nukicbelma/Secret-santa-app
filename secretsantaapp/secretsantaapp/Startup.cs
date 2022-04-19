@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using secretsantaapp.Database;
+using secretsantaapp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,7 +65,8 @@ namespace secretsantaapp
             services.AddDbContext<SecretSantaContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection" /*"cs1"*/)));
 
-
+            //
+            services.AddScoped<IUsersService, UsersService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
