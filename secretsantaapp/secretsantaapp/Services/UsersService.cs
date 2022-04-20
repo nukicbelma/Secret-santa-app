@@ -55,14 +55,14 @@ namespace secretsantaapp.Services
             _context.Users.Add(entity);
             _context.SaveChanges();
 
-            foreach (var uloga in request.UsersRoles)
+            foreach (var uloga in request.Roles)
             {
-                //secretsantaapp.Database.UsersRoles korisniciUloge = new secretsantaapp.Database.UsersRoles();
-                //korisniciUloge.UsersId = entity.UsersId;
-                //korisniciUloge.RolesId = uloga;
-                //korisniciUloge.PublishedDate = DateTime.Now;
-                //_context.UsersRoles.Add(korisniciUloge);
-                //_context.SaveChanges();
+                secretsantaapp.Database.UsersRoles korisniciUloge = new secretsantaapp.Database.UsersRoles();
+                korisniciUloge.UsersId = entity.UsersId;
+                korisniciUloge.RolesId = uloga;
+                korisniciUloge.PublishedDate = DateTime.Now;
+                _context.UsersRoles.Add(korisniciUloge);
+                _context.SaveChanges();
             }
             _context.SaveChanges();
         }

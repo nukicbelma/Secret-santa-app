@@ -15,6 +15,6 @@ namespace secretsantaapp.Model.Requests
         public string PasswordPotvrda { get; set; }
         public string Address { get; set; }
         public bool Status { get; set; }
-        public List<int> UsersRoles { get; set; } = new List<int>();
+        public List<int> Roles { get; set; } = new List<int>();
     }
 }
