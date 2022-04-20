@@ -38,6 +38,8 @@ namespace secretsantaapp
             //services.AddControllers(x => {
             //    x.Filters.Add<ExceptionFilterAttribute>();
             //});
+            services.AddControllers().AddNewtonsoftJson(x =>
+            x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -70,6 +72,7 @@ namespace secretsantaapp
             //
             services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<IRolesService, RolesService>();
+            services.AddScoped<IGiftService, GiftService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
