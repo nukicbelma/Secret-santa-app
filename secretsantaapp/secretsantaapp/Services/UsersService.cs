@@ -88,7 +88,7 @@ namespace secretsantaapp.Services
         }
         public async Task<secretsantaapp.Model.Models.Users> Login(string username, string password)
         {
-            var entity = await _context.Users.Include("UsersRole.Uloge").FirstOrDefaultAsync(x => x.Username == username);
+            var entity = await _context.Users.Include("UsersRoles.Roles").FirstOrDefaultAsync(x => x.Username == username);
             if (entity == null)
             {
                 throw new UserException("Pogresan username ili password");
@@ -100,48 +100,48 @@ namespace secretsantaapp.Services
             }
             return _mapper.Map<secretsantaapp.Model.Models.Users>(entity);
         }
-        //public Model.Models.Users Authenticiraj(string username, string pass)
-        //{
-        //    var user = _context.Users.FirstOrDefault(x => x.Username == username);
+        public Model.Models.Users Authenticiraj(string username, string pass)
+        {
+            var user = _context.Users.FirstOrDefault(x => x.Username == username);
 
-        //    if (user != null)
-        //    {
-        //        var hashedPass = GenerateHash(user.PaswordSalt, pass);
+            if (user != null)
+            {
+                var hashedPass = GenerateHash(user.PaswordSalt, pass);
 
-        //        if (hashedPass == user.PasswordHash)
-        //        {
-        //            var uloge = _context.UsersRoles.Include(x => x.Roles).Where(x => x.UsersId == user.UsersId);
-        //            Model.Models.Users novikorisnik = new Model.Models.Users();
+                if (hashedPass == user.PasswordHash)
+                {
+                    var uloge = _context.UsersRoles.Include(x => x.Roles).Where(x => x.UsersId == user.UsersId);
+                    Model.Models.Users novikorisnik = new Model.Models.Users();
 
-        //            foreach (var item in uloge)
-        //            {
+                    foreach (var item in uloge)
+                    {
 
-        //                novikorisnik.KorisniciUloge = new List<KorisniciUloge>();
-        //                novikorisnik.KorisniciUloge.Add(new KorisniciUloge
-        //                {
-        //                    DatumIzmjene = item.DatumIzmjene,
-        //                    KorisniciId = item.KorisniciId,
-        //                    UlogeId = item.UlogeId,
-        //                    KorisniciUlogeId = item.KorisniciUlogeId,
-        //                    Uloge = new Uloge
-        //                    {
-        //                        Naziv = item.Uloge.Naziv,
-        //                        OpisUloge = item.Uloge.OpisUloge,
-        //                        UlogeId = item.Uloge.UlogeId
-        //                    }
-        //                });
-        //            }
-        //            novikorisnik.Ime = user.Ime;
-        //            novikorisnik.Prezime = user.Prezime;
-        //            novikorisnik.KorisnickoIme = user.KorisnickoIme;
-        //            novikorisnik.Email = user.Email;
-        //            novikorisnik.KorisniciId = user.KorisniciId;
-        //            novikorisnik.Telefon = user.Telefon;
+                        novikorisnik.UsersRoles = new List<Model.Models.UsersRoles>();
+                        novikorisnik.UsersRoles.Add(new Model.Models.UsersRoles
+                        {
+                            PublishedDate = item.PublishedDate,
+                            UsersId = item.UsersId,
+                            RolesId = item.RolesId,
+                            UsersRolesId = item.UsersRolesId,
+                            Roles = new Model.Models.Roles
+                            {
+                                RoleName = item.Roles.RoleName,
+                                RoleDuty = item.Roles.RoleDuty,
+                                RolesId = item.Roles.RolesId
+                            }
+                        });
+                    }
+                    novikorisnik.FirstName = user.FirstName;
+                    novikorisnik.LastName = user.LastName;
+                    novikorisnik.Username = user.Username;
+                    novikorisnik.Email = user.Email;
+                    novikorisnik.UsersId = user.UsersId;
+                    novikorisnik.Phone = user.Phone;
 
-        //            return novikorisnik;
-        //        }
-        //    }
-        //    return null;
-        //}
+                    return novikorisnik;
+                }
+            }
+            return null;
+        }
     }
 }

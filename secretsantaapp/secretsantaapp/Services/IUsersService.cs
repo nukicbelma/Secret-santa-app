@@ -8,11 +8,10 @@ namespace secretsantaapp.Services
 {
     public interface IUsersService
     {
-        //Task<secretsantaapp.Model.Models.Korisnici> Login(string username, string password);
+        Task<secretsantaapp.Model.Models.Users> Login(string username, string password);
         List<secretsantaapp.Model.Models.Users> Get(UsersSearchRequest search);
         //Korisnici GetById(int id);
         void Insert(UsersInsertRequest request);
-        //void Update(int id, KorisniciUpdateRequest request);
-        //Korisnici Authenticiraj(string username, string pass);
+        secretsantaapp.Model.Models.Users Authenticiraj(string username, string pass);
     }
 }

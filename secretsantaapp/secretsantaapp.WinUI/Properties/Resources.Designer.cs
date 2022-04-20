@@ -59,5 +59,14 @@ namespace secretsantaapp.WinUI.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://localhost:5001/.
+        /// </summary>
+        internal static string APIUrl {
+            get {
+                return ResourceManager.GetString("APIUrl", resourceCulture);
+            }
+        }
     }
 }

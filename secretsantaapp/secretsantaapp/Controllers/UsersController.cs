@@ -22,13 +22,13 @@ namespace secretsantaapp.Controllers
             _service = service;
         }
 
-        //[HttpGet]
-        //[AllowAnonymous]
-        //[Route("Authenticiraj/{username},{password}")]
-        //public Users Authenticiraj(string username, string password)
-        //{
-        //    return _service.Authenticiraj(username, password);
-        //}
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("Authenticiraj/{username},{password}")]
+        public Users Authenticiraj(string username, string password)
+        {
+            return _service.Authenticiraj(username, password);
+        }
 
         [HttpGet]
         public List<Users> Get([FromQuery] UsersSearchRequest request)
@@ -42,14 +42,6 @@ namespace secretsantaapp.Controllers
         {
             _service.Insert(request);
         }
-
-
-        //[Authorize(Roles = "Admin")]
-        //[HttpPut("{id}")]
-        //public void Update(int id, [FromBody] KorisniciUpdateRequest request)
-        //{
-        //    _service.Update(id, request);
-        //}
 
         //[HttpGet("{id}")]
         //public Korisnici GetById(int id)
