@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using secretsantaapp.Database;
+using secretsantaapp.Security;
 using secretsantaapp.Services;
 using System;
 using System.Collections.Generic;
@@ -58,8 +60,8 @@ namespace secretsantaapp
                     }
                 });
             });
-           // services.AddAuthentication("BasicAuthentication")
-           //.AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+            services.AddAuthentication("BasicAuthentication")
+           .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
 
             services.AddDbContext<SecretSantaContext>(options =>

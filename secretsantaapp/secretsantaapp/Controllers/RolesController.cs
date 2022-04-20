@@ -10,7 +10,7 @@ namespace secretsantaapp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    //[Authorize]
+    [Authorize]
     public class RolesController : ControllerBase
     {
         private readonly IRolesService _service;
