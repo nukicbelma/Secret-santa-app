@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using secretsantaapp.Model.Requests;
 using secretsantaapp.Services;
 using System;
 using System.Collections.Generic;
@@ -25,5 +26,12 @@ namespace secretsantaapp.Controllers
         {
             return _service.Get();
         }
+
+        [HttpPost]
+        public void Insert(GiftInsertRequest request)
+        {
+            _service.Insert(request);
+        }
+
     }
 }

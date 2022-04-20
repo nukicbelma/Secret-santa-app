@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using secretsantaapp.Exceptions;
 using secretsantaapp.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace secretsantaapp.Services
@@ -24,10 +27,31 @@ namespace secretsantaapp.Services
             var list = query.ToList();
             return _mapper.Map<List<Model.Models.Gift>>(list);
         }
-        public void Insert(GiftInsertRequest request)
+        public async Task<bool> PostojiLi(GiftInsertRequest request)
         {
-            secretsantaapp.Database.Gift entity = _mapper.Map<secretsantaapp.Database.Gift>(request);
-            _context.SaveChanges();
+            return !await _context.Gift.AnyAsync(i => i.ToUsersId == request.ToUsersId);
+        }
+        public bool imali(GiftInsertRequest request)
+        {
+            bool ima = false;
+            if(_context.Gift.Any(i=>i.ToUsersId==request.ToUsersId))
+            {
+                ima = true;
+            }
+            return ima;
+        }
+        public async void Insert(GiftInsertRequest request)
+        {
+            //if (await PostojiLi(request))
+            if (imali(request))
+            {
+                Database.Gift entity = _mapper.Map<Database.Gift>(request);
+
+                _context.Gift.Add(entity);
+                _context.SaveChanges();
+            }
+            else
+                throw new UserException($"Korisnik je vec prethodno odabran za darovanje!", HttpStatusCode.BadRequest);
         }
     }
 }
