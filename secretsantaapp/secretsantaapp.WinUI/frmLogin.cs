@@ -14,5 +14,11 @@ namespace secretsantaapp.WinUI
         {
             InitializeComponent();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            var frm = new frmSecretSanta();
+            frm.ShowDialog();
+        }
     }
 }

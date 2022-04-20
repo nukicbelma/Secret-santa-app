@@ -37,6 +37,14 @@ namespace secretsantaapp.Controllers
         }
 
         //[Authorize(Roles = "Admin")]
+        [HttpPost]
+        public void Insert(UsersInsertRequest request)
+        {
+            _service.Insert(request);
+        }
+
+
+        //[Authorize(Roles = "Admin")]
         //[HttpPut("{id}")]
         //public void Update(int id, [FromBody] KorisniciUpdateRequest request)
         //{

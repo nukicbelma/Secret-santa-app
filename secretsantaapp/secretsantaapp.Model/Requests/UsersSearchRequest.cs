@@ -6,6 +6,6 @@ namespace secretsantaapp.Model.Requests
 {
     public class UsersSearchRequest
     {
-
+        public int Id { get; set; }
     }
 }

@@ -13,6 +13,9 @@ namespace secretsantaapp.AutoMapper
         public secretsantaappProfile()
         {
             CreateMap<UsersSearchRequest, Database.Users>();
+            CreateMap<UsersInsertRequest, Database.Users>();
+            CreateMap<Database.UsersRoles, Model.Models.UsersRoles>();
+            CreateMap<Database.Roles, Model.Models.Roles>();
             CreateMap<Database.Users, Model.Models.Users>();
         }
     }

@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace secretsantaapp.Model.Models
+namespace secretsantaapp.Model.Requests
 {
-    public class Users
+    public class UsersInsertRequest
     {
-        public int UsersId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Username { get; set; }
-        public string PasswordHash { get; set; }
-        public string PaswordSalt { get; set; }
+        public string Password { get; set; }
+        public string PasswordPotvrda { get; set; }
         public string Address { get; set; }
         public bool Status { get; set; }
-        public virtual ICollection<UsersRoles> UsersRoles { get; set; }
+        public List<int> UsersRoles { get; set; } = new List<int>();
     }
 }
