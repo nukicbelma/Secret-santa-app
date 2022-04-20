@@ -15,6 +15,7 @@ namespace secretsantaapp.Database
         {
         }
 
+        public virtual DbSet<Gift> Gift { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UsersRoles> UsersRoles { get; set; }
@@ -30,6 +31,23 @@ namespace secretsantaapp.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Gift>(entity =>
+            {
+                entity.Property(e => e.DatePublished).HasColumnType("datetime");
+
+                entity.HasOne(d => d.FromUsers)
+                    .WithMany(p => p.GiftFromUsers)
+                    .HasForeignKey(d => d.FromUsersId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_fromusers");
+
+                entity.HasOne(d => d.ToUsers)
+                    .WithMany(p => p.GiftToUsers)
+                    .HasForeignKey(d => d.ToUsersId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_tousers");
+            });
+
             modelBuilder.Entity<Roles>(entity =>
             {
                 entity.Property(e => e.RoleDuty)

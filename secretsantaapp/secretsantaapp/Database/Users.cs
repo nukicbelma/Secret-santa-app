@@ -7,6 +7,8 @@ namespace secretsantaapp.Database
     {
         public Users()
         {
+            GiftFromUsers = new HashSet<Gift>();
+            GiftToUsers = new HashSet<Gift>();
             UsersRoles = new HashSet<UsersRoles>();
         }
 
@@ -21,6 +23,8 @@ namespace secretsantaapp.Database
         public string Address { get; set; }
         public bool Status { get; set; }
 
+        public virtual ICollection<Gift> GiftFromUsers { get; set; }
+        public virtual ICollection<Gift> GiftToUsers { get; set; }
         public virtual ICollection<UsersRoles> UsersRoles { get; set; }
     }
 }

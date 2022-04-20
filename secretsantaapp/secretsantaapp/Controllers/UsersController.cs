@@ -12,7 +12,7 @@ namespace secretsantaapp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    //[Authorize]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IUsersService _service;
@@ -36,17 +36,17 @@ namespace secretsantaapp.Controllers
             return _service.Get(request);
         }
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public void Insert(UsersInsertRequest request)
         {
             _service.Insert(request);
         }
 
-        //[HttpGet("{id}")]
-        //public Korisnici GetById(int id)
-        //{
-        //    return _service.GetById(id);
-        //}
+        [HttpGet("{id}")]
+        public Model.Models.Users GetById(int id)
+        {
+            return _service.GetById(id);
+        }
     }
 }

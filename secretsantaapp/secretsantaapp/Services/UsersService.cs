@@ -25,13 +25,7 @@ namespace secretsantaapp.Services
         public List<Model.Models.Users> Get(UsersSearchRequest search)
         {
             var query = _context.Users.AsQueryable();
-
-            //if (!string.IsNullOrWhiteSpace(search?.Id.ToString()))
-            //{
-            //    query = query.Where(x => x.UsersId==search.Id);
-            //}
             var list = query.ToList();
-
             return _mapper.Map<List<Model.Models.Users>>(list);
         }
         public Model.Models.Users GetById(int id)

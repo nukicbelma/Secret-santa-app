@@ -10,7 +10,7 @@ namespace secretsantaapp.Services
     {
         Task<secretsantaapp.Model.Models.Users> Login(string username, string password);
         List<secretsantaapp.Model.Models.Users> Get(UsersSearchRequest search);
-        //Korisnici GetById(int id);
+        Model.Models.Users GetById(int id);
         void Insert(UsersInsertRequest request);
         secretsantaapp.Model.Models.Users Authenticiraj(string username, string pass);
     }
