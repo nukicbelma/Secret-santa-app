@@ -43,15 +43,13 @@ namespace secretsantaapp.Services
         public async void Insert(GiftInsertRequest request)
         {
             //if (await PostojiLi(request))
-            if (imali(request))
+            if (!imali(request))
             {
                 Database.Gift entity = _mapper.Map<Database.Gift>(request);
 
                 _context.Gift.Add(entity);
                 _context.SaveChanges();
             }
-            else
-                throw new UserException($"Korisnik je vec prethodno odabran za darovanje!", HttpStatusCode.BadRequest);
         }
     }
 }

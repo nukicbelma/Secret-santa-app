@@ -13,5 +13,6 @@ namespace secretsantaapp.Model.Models
 
         public virtual Users FromUsers { get; set; }
         public virtual Users ToUsers { get; set; }
+
     }
 }

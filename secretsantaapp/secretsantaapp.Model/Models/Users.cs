@@ -17,5 +17,9 @@ namespace secretsantaapp.Model.Models
         public string Address { get; set; }
         public bool Status { get; set; }
         public virtual ICollection<UsersRoles> UsersRoles { get; set; }
+        public override string ToString()
+        {
+            return FirstName + " " + LastName;
+        }
     }
 }
