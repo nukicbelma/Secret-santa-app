@@ -62,6 +62,7 @@ namespace secretsantaapp.WinUI
             this.btnSecretSanta.TabIndex = 2;
             this.btnSecretSanta.Text = "Play @SecretSanta";
             this.btnSecretSanta.UseVisualStyleBackColor = true;
+            this.btnSecretSanta.Click += new System.EventHandler(this.btnSecretSanta_Click);
             // 
             // frmSecretSanta
             // 

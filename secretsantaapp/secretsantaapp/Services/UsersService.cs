@@ -35,6 +35,7 @@ namespace secretsantaapp.Services
             return _mapper.Map<Model.Models.Users>(entity);
 
         }
+
         public void Insert(UsersInsertRequest request)
         {
             secretsantaapp.Database.Users entity = _mapper.Map<secretsantaapp.Database.Users>(request);

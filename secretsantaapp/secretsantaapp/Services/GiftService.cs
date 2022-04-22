@@ -42,14 +42,17 @@ namespace secretsantaapp.Services
         }
         public async void Insert(GiftInsertRequest request)
         {
-            //if (await PostojiLi(request))
-            if (!imali(request))
-            {
-                Database.Gift entity = _mapper.Map<Database.Gift>(request);
+            var randomGiver = _context.Users.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
 
-                _context.Gift.Add(entity);
-                _context.SaveChanges();
-            }
+            var model = new Model.Requests.GiftInsertRequest
+            {
+                FromUsersId = request.FromUsersId, 
+                DatePublished=DateTime.Now,
+                ToUsersId=randomGiver.UsersId
+            };
+             Database.Gift entity =  _mapper.Map<Database.Gift>(model);
+             _context.Gift.Add(entity);
+             _context.SaveChanges();
         }
     }
 }

@@ -37,11 +37,16 @@ namespace secretsantaapp.WinUI
             await LoadGiftPairs();
         }
 
-        private async void btnDodaj_Click(object sender, EventArgs e)
+        private void btnGenerisi_Click(object sender, EventArgs e)
         {
-            var frm = new frmDodajSecretSantaAdmin();
+
+        }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            var frm = new frmDodajUposlenike();
             frm.ShowDialog();
-            await LoadGiftPairs();
+            
         }
     }
 }

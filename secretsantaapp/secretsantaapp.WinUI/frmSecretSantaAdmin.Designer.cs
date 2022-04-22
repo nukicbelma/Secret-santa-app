@@ -36,6 +36,7 @@ namespace secretsantaapp.WinUI
             this.ToUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatePublished = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGenerisi = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGiftPairs)).BeginInit();
@@ -100,13 +101,23 @@ namespace secretsantaapp.WinUI
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             // 
+            // btnGenerisi
+            // 
+            this.btnGenerisi.Location = new System.Drawing.Point(265, 239);
+            this.btnGenerisi.Name = "btnGenerisi";
+            this.btnGenerisi.Size = new System.Drawing.Size(258, 23);
+            this.btnGenerisi.TabIndex = 1;
+            this.btnGenerisi.Text = "Generisi parove @secretsanta";
+            this.btnGenerisi.UseVisualStyleBackColor = true;
+            this.btnGenerisi.Click += new System.EventHandler(this.btnGenerisi_Click);
+            // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(370, 238);
+            this.btnDodaj.Location = new System.Drawing.Point(15, 239);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(153, 23);
-            this.btnDodaj.TabIndex = 1;
-            this.btnDodaj.Text = "Dodaj par @secretsanta";
+            this.btnDodaj.Size = new System.Drawing.Size(236, 23);
+            this.btnDodaj.TabIndex = 2;
+            this.btnDodaj.Text = "Dodaj uposlenike/Ucesnike";
             this.btnDodaj.UseVisualStyleBackColor = true;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
@@ -114,8 +125,9 @@ namespace secretsantaapp.WinUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 269);
+            this.ClientSize = new System.Drawing.Size(538, 274);
             this.Controls.Add(this.btnDodaj);
+            this.Controls.Add(this.btnGenerisi);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmSecretSantaAdmin";
             this.Text = "Admin:: Secret santa app";
@@ -135,6 +147,7 @@ namespace secretsantaapp.WinUI
         private System.Windows.Forms.DataGridViewTextBoxColumn FromUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn ToUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatePublished;
+        private System.Windows.Forms.Button btnGenerisi;
         private System.Windows.Forms.Button btnDodaj;
     }
 }
