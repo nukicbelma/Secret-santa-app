@@ -27,32 +27,31 @@ namespace secretsantaapp.Services
             var list = query.ToList();
             return _mapper.Map<List<Model.Models.Gift>>(list);
         }
-        public async Task<bool> PostojiLi(GiftInsertRequest request)
+        public async Task<bool> PostojiLi(int id)
         {
-            return !await _context.Gift.AnyAsync(i => i.ToUsersId == request.ToUsersId);
+            return !await _context.Gift.AnyAsync(i => i.ToUsersId == id);
         }
-        public bool imali(GiftInsertRequest request)
-        {
-            bool ima = false;
-            if(_context.Gift.Any(i=>i.ToUsersId==request.ToUsersId))
-            {
-                ima = true;
-            }
-            return ima;
-        }
-        public async void Insert(GiftInsertRequest request)
+        public async Task<Model.Models.Gift> Insert(GiftInsertRequest request)
         {
             var randomGiver = _context.Users.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+            while (!await PostojiLi(randomGiver.UsersId))
+            {
+                randomGiver = _context.Users.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
 
+            }
             var model = new Model.Requests.GiftInsertRequest
             {
-                FromUsersId = request.FromUsersId, 
-                DatePublished=DateTime.Now,
-                ToUsersId=randomGiver.UsersId
+                FromUsersId = request.FromUsersId,
+                ToUsersId = randomGiver.UsersId,
+                DatePublished = DateTime.Now
+
             };
-             Database.Gift entity =  _mapper.Map<Database.Gift>(model);
-             _context.Gift.Add(entity);
-             _context.SaveChanges();
+            Database.Gift entity = _mapper.Map<Database.Gift>(model);
+            await _context.Gift.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<Model.Models.Gift>(entity);
         }
     }
 }
+
+

@@ -9,6 +9,7 @@ namespace secretsantaapp.Services
     public interface IGiftService
     {
         public List<Model.Models.Gift> Get();
-        public void Insert(GiftInsertRequest request);
+        //public void Insert(GiftInsertRequest request);
+        Task<Model.Models.Gift> Insert(GiftInsertRequest request);
     }
 }

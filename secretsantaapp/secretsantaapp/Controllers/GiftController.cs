@@ -28,9 +28,9 @@ namespace secretsantaapp.Controllers
         }
 
         [HttpPost]
-        public void Insert(GiftInsertRequest request)
+        public async Task<secretsantaapp.Model.Models.Gift> Insert([FromBody] GiftInsertRequest request)
         {
-            _service.Insert(request);
+            return await _service.Insert(request);
         }
 
     }
