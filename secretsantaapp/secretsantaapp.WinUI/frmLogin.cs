@@ -48,10 +48,8 @@ namespace secretsantaapp.WinUI
 
                 if (User.UsersRoles.FirstOrDefault().RolesId == 1)
                 {
-                //    var admin = new frmSecretSantaAdmin();
-                //    admin.ShowDialog();
-                    var uposlenik = new frmSecretSanta();
-                    uposlenik.ShowDialog();
+                    var admin = new frmSecretSantaAdmin();
+                    admin.ShowDialog();
                 }
                 else if (User.UsersRoles.FirstOrDefault().RolesId == 3)
                 {

@@ -31,13 +31,13 @@ namespace secretsantaapp.WinUI
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvGiftPairs = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGenerisi = new System.Windows.Forms.Button();
+            this.btnDodaj = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FromUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatePublished = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnGenerisi = new System.Windows.Forms.Button();
-            this.btnDodaj = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGiftPairs)).BeginInit();
             this.SuspendLayout();
@@ -69,32 +69,6 @@ namespace secretsantaapp.WinUI
             this.dgvGiftPairs.TabIndex = 0;
             this.dgvGiftPairs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "GiftId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // FromUser
-            // 
-            this.FromUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FromUser.DataPropertyName = "FromUsers";
-            this.FromUser.HeaderText = "FromUser";
-            this.FromUser.Name = "FromUser";
-            // 
-            // ToUser
-            // 
-            this.ToUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ToUser.DataPropertyName = "ToUsers";
-            this.ToUser.HeaderText = "ToUser";
-            this.ToUser.Name = "ToUser";
-            // 
-            // DatePublished
-            // 
-            this.DatePublished.DataPropertyName = "DatePublished";
-            this.DatePublished.HeaderText = "DatePublished";
-            this.DatePublished.Name = "DatePublished";
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "GiftId";
@@ -121,6 +95,32 @@ namespace secretsantaapp.WinUI
             this.btnDodaj.UseVisualStyleBackColor = true;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "GiftId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // FromUser
+            // 
+            this.FromUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FromUser.DataPropertyName = "FromUsers";
+            this.FromUser.HeaderText = "FromUser";
+            this.FromUser.Name = "FromUser";
+            // 
+            // ToUser
+            // 
+            this.ToUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ToUser.DataPropertyName = "ToUsers";
+            this.ToUser.HeaderText = "ToUser";
+            this.ToUser.Name = "ToUser";
+            // 
+            // DatePublished
+            // 
+            this.DatePublished.DataPropertyName = "DatePublished";
+            this.DatePublished.HeaderText = "DatePublished";
+            this.DatePublished.Name = "DatePublished";
+            // 
             // frmSecretSantaAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -143,11 +143,11 @@ namespace secretsantaapp.WinUI
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvGiftPairs;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.Button btnGenerisi;
+        private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn FromUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn ToUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatePublished;
-        private System.Windows.Forms.Button btnGenerisi;
-        private System.Windows.Forms.Button btnDodaj;
     }
 }

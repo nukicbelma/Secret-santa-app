@@ -11,8 +11,8 @@ namespace secretsantaapp.Model.Models
         public int ToUsersId { get; set; }
         public DateTime DatePublished { get; set; }
 
-        public virtual Users FromUsers { get; set; }
-        public virtual Users ToUsers { get; set; }
+        public string FromUsers { get; set; }
+        public string ToUsers { get; set; }
 
     }
 }

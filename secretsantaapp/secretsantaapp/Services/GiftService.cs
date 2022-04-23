@@ -23,33 +23,86 @@ namespace secretsantaapp.Services
         }
         public List<Model.Models.Gift> Get()
         {
-            var query = _context.Gift.AsQueryable();
-            var list = query.ToList();
-            return _mapper.Map<List<Model.Models.Gift>>(list);
+            var giftList = _context.Gift.AsQueryable().ToList();
+            var usersList = _context.Users.AsQueryable().ToList();
+            List<Model.Models.Gift> result = new List<Model.Models.Gift>();
+
+            foreach (var item in giftList)
+            {
+
+                Model.Models.Gift newGift = new Model.Models.Gift();
+
+                newGift.GiftId = item.GiftId;
+                newGift.FromUsersId = item.FromUsersId;
+                newGift.ToUsersId = item.ToUsersId;
+                newGift.DatePublished = item.DatePublished;
+
+                foreach (var user in usersList)
+                {
+                    if (user.UsersId == item.ToUsersId)
+                        newGift.ToUsers = user.FirstName + " " + user.LastName;
+                }
+                foreach (var user in usersList)
+                {
+                    if (user.UsersId == item.FromUsersId)
+                        newGift.FromUsers = user.FirstName + " " + user.LastName;
+                }
+                result.Add(newGift);
+            }
+            return result;
         }
         public async Task<bool> PostojiLi(int id)
         {
             return !await _context.Gift.AnyAsync(i => i.ToUsersId == id);
         }
-        public async Task<Model.Models.Gift> Insert(GiftInsertRequest request)
+
+        public void  Insert(GiftInsertRequest request)
         {
-            var randomGiver = _context.Users.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
-            while (!await PostojiLi(randomGiver.UsersId))
+            var query = _context.Users.AsQueryable().ToList();
+            var giversLista = new List<Model.Models.Users>();
+            int kolicina = query.Count();
+            var recieversLista = new List<Model.Models.Users>();
+            foreach (var item in query)
             {
-                randomGiver = _context.Users.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+                Model.Models.Users user = new Model.Models.Users();
+                user.FirstName = item.FirstName;
+                user.LastName = item.LastName;
+                user.Address = item.Address;
+                user.Email = item.Email;
+                user.Username = item.Username;
+                user.UsersId = item.UsersId;
+                user.PasswordHash = item.PasswordHash;
+                user.PaswordSalt = item.PaswordSalt;
+                user.Status = item.Status;
+
+                giversLista.Add(user);
+                recieversLista.Add(user);
+            }
+
+            for (int i = 0; i < kolicina; i++)
+            {
+                var randomGiver = giversLista.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+                var randomReciever = recieversLista.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+                if (randomGiver.UsersId != randomReciever.UsersId)
+                {
+                   
+                    var model = new GiftInsertRequest
+                    {
+                        FromUsersId = randomGiver.UsersId,
+                        ToUsersId = randomReciever.UsersId,
+                        DatePublished = DateTime.Now
+                    };
+                    Database.Gift entity = _mapper.Map<Database.Gift>(model);
+
+                    _context.Gift.AddAsync(entity);
+                    _context.SaveChangesAsync();
+                    _mapper.Map<Model.Models.Gift>(entity);
+
+                    giversLista.Remove(randomGiver);
+                    recieversLista.Remove(randomReciever);
+                }
 
             }
-            var model = new Model.Requests.GiftInsertRequest
-            {
-                FromUsersId = request.FromUsersId,
-                ToUsersId = randomGiver.UsersId,
-                DatePublished = DateTime.Now
-
-            };
-            Database.Gift entity = _mapper.Map<Database.Gift>(model);
-            await _context.Gift.AddAsync(entity);
-            await _context.SaveChangesAsync();
-            return _mapper.Map<Model.Models.Gift>(entity);
         }
     }
 }

@@ -37,9 +37,11 @@ namespace secretsantaapp.WinUI
             await LoadGiftPairs();
         }
 
-        private void btnGenerisi_Click(object sender, EventArgs e)
+        private async void btnGenerisi_Click(object sender, EventArgs e)
         {
-
+            var model = new Model.Requests.GiftInsertRequest {};
+            await _giftService.Insert<Model.Models.Gift>(model);
+            await LoadGiftPairs();
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
