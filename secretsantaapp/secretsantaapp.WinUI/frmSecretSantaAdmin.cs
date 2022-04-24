@@ -29,7 +29,8 @@ namespace secretsantaapp.WinUI
         }
         private async Task LoadGiftPairs()
         {
-            var result = await _giftService.Get<List<Model.Models.Gift>>();
+            var model = new Model.Requests.GiftSearchRequest { };
+            var result = await _giftService.Get<List<Model.Models.Gift>>(model);
             dgvGiftPairs.DataSource = result;
         }
         private async void frmSecretSantaAdmin_Load(object sender, EventArgs e)

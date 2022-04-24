@@ -21,9 +21,15 @@ namespace secretsantaapp.Services
             _context = context;
             _mapper = mapper;
         }
-        public List<Model.Models.Gift> Get()
+        public List<Model.Models.Gift> Get(GiftSearchRequest request)
         {
-            var giftList = _context.Gift.AsQueryable().ToList();
+            var query= _context.Gift.AsQueryable();
+            if ((!string.IsNullOrWhiteSpace((request?.FromUsersId).ToString())) && request?.FromUsersId != 0)
+            {
+                query = query.Where(x => x.FromUsersId == request.FromUsersId);
+            }
+
+            var giftList = query.ToList();
             var usersList = _context.Users.AsQueryable().ToList();
             List<Model.Models.Gift> result = new List<Model.Models.Gift>();
 
@@ -99,27 +105,6 @@ namespace secretsantaapp.Services
                     _context.SaveChanges();
                 }
 
-            }
-        }
-        public void Dodaj(GiftInsertRequest request)
-        {
-            var query = _context.Users.AsQueryable().ToList();
-            var querygifts = _context.Gift.AsQueryable().ToList();
-
-            var randomReciever = query.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
-            if (randomReciever.UsersId != randomReciever.UsersId)
-            {
-                var model = new GiftInsertRequest
-                {
-                    FromUsersId = request.FromUsersId,
-                    ToUsersId = randomReciever.UsersId,
-                    DatePublished = DateTime.Now
-                };
-                Database.Gift entity = _mapper.Map<Database.Gift>(model);
-
-                _context.Gift.AddAsync(entity);
-                _context.SaveChangesAsync();
-                _mapper.Map<Model.Models.Gift>(entity);
             }
         }
         public virtual async Task<bool> Delete()

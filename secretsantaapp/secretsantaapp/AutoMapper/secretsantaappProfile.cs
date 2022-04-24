@@ -15,6 +15,7 @@ namespace secretsantaapp.AutoMapper
             CreateMap<UsersSearchRequest, Database.Users>();
             CreateMap<UsersInsertRequest, Database.Users>();
             CreateMap<GiftInsertRequest, Database.Gift>();
+            CreateMap<GiftSearchRequest, Database.Gift>();
             CreateMap<Database.UsersRoles, Model.Models.UsersRoles>();
             CreateMap<Database.Roles, Model.Models.Roles>();
             CreateMap<Database.Users, Model.Models.Users>();

@@ -22,9 +22,9 @@ namespace secretsantaapp.Controllers
         }
 
         [HttpGet]
-        public List<Model.Models.Gift> Get()
+        public List<Model.Models.Gift> Get([FromQuery] GiftSearchRequest search)
         {
-            return _service.Get();
+            return _service.Get(search);
         }
 
         [HttpPost]
@@ -32,12 +32,6 @@ namespace secretsantaapp.Controllers
         {
              _service.Insert(request);
         }
-        //[HttpPost]
-        //public void Dodaj([FromBody] GiftInsertRequest request)
-        //{
-        //    _service.Dodaj(request);
-        //}
-
         [HttpDelete]
         public async Task<bool> Delete()
         {

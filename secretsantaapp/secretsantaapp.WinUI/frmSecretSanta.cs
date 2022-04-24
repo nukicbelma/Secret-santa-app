@@ -25,35 +25,10 @@ namespace secretsantaapp.WinUI
             {
                 FromUsersId = LoggedInUser.LoggedUser.UsersId
             };
-            await _giftService.Dodaj<Model.Models.Gift>(model);
+            var santa=await _giftService.Get<List<Model.Models.Gift>>(model);
+            var secretsanta = santa.FirstOrDefault();
+            MessageBox.Show($"Vas secret santa je uposlenik: {secretsanta.ToUsers}");
             
-            await UcitajSantu();
-        }
-        private async Task UcitajSantu()
-        {
-            try{
-                var list = await _giftService.Get<List<Model.Models.Gift>>();
-                var mojlist = new List<Model.Models.Gift>();
-                foreach (var item in list)
-                {
-                    if (item.FromUsersId == LoggedInUser.LoggedUser.UsersId)
-                        mojlist.Add(item);
-                }
-                var santa = mojlist.FirstOrDefault();
-
-                var listauposlenika = await _usersService.Get<List<Model.Models.Users>>();
-                var secretsanta = new Model.Models.Users();
-                foreach (var item in listauposlenika)
-                {
-                    if (santa.ToUsersId == item.UsersId)
-                        secretsanta = item;
-                }
-                MessageBox.Show($"Vas secret santa je uposlenik: {secretsanta.FirstName} {secretsanta.LastName}");
-            }
-            catch
-            {
-                MessageBox.Show("Nemate secret santu.");
-            }
         }
     }
 }
