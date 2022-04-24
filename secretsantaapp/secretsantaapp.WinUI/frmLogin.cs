@@ -50,6 +50,8 @@ namespace secretsantaapp.WinUI
                 {
                     var admin = new frmSecretSantaAdmin();
                     admin.ShowDialog();
+                    //var uposlenik = new frmSecretSanta();
+                    //uposlenik.ShowDialog();
                 }
                 else if (User.UsersRoles.FirstOrDefault().RolesId == 3)
                 {

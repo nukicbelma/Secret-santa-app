@@ -32,5 +32,16 @@ namespace secretsantaapp.Controllers
         {
              _service.Insert(request);
         }
+        //[HttpPost]
+        //public void Dodaj([FromBody] GiftInsertRequest request)
+        //{
+        //    _service.Dodaj(request);
+        //}
+
+        [HttpDelete("{id}")]
+        public async Task<bool> Delete()
+        {
+            return await _service.Delete();
+        }
     }
 }

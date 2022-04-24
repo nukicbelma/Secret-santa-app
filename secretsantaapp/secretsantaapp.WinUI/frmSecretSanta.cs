@@ -25,7 +25,7 @@ namespace secretsantaapp.WinUI
             {
                 FromUsersId = LoggedInUser.LoggedUser.UsersId
             };
-            await _giftService.Insert<Model.Models.Gift>(model);
+            await _giftService.Dodaj<Model.Models.Gift>(model);
             
             await UcitajSantu();
         }

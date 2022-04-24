@@ -84,6 +84,29 @@ namespace secretsantaapp.WinUI
             }
 
         }
+        public async Task<T> Dodaj<T>(object request)
+        {
+            var url = $"{endpoint}{_resource}";
+
+            try
+            {
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
+
+        }
         public async Task<T> Authenticiraj<T>(string username, string password)
         {
             var url = $"{secretsantaapp.WinUI.Properties.Resources.APIUrl}{_resource}/Authenticiraj/{username},{password}";
@@ -113,11 +136,11 @@ namespace secretsantaapp.WinUI
                 return default(T);
             }
         }
-        public async Task<bool> Delete<T>(int id)
+        public async Task<bool> Delete<T>()
         {
             try
             {
-                var url = $"{endpoint}{_resource}/{id}";
+                var url = $"{endpoint}{_resource}";
                 return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<bool>();
             }
             catch (FlurlHttpException ex)

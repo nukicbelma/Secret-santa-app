@@ -56,8 +56,9 @@ namespace secretsantaapp.Services
             return !await _context.Gift.AnyAsync(i => i.ToUsersId == id);
         }
 
-        public void  Insert(GiftInsertRequest request)
+        public void Insert(GiftInsertRequest request)
         {
+            var gifts = _context.Gift.AsQueryable().ToList();
             var query = _context.Users.AsQueryable().ToList();
             var giversLista = new List<Model.Models.Users>();
             int kolicina = query.Count();
@@ -85,7 +86,8 @@ namespace secretsantaapp.Services
                 var randomReciever = recieversLista.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
                 if (randomGiver.UsersId != randomReciever.UsersId)
                 {
-                   
+                    giversLista.Remove(randomGiver);
+                    recieversLista.Remove(randomReciever);
                     var model = new GiftInsertRequest
                     {
                         FromUsersId = randomGiver.UsersId,
@@ -93,15 +95,45 @@ namespace secretsantaapp.Services
                         DatePublished = DateTime.Now
                     };
                     Database.Gift entity = _mapper.Map<Database.Gift>(model);
-
-                    _context.Gift.AddAsync(entity);
-                    _context.SaveChangesAsync();
-                    _mapper.Map<Model.Models.Gift>(entity);
-
-                    giversLista.Remove(randomGiver);
-                    recieversLista.Remove(randomReciever);
+                    _context.Gift.Add(entity);
+                    _context.SaveChanges();
                 }
 
+            }
+        }
+        public void Dodaj(GiftInsertRequest request)
+        {
+            var query = _context.Users.AsQueryable().ToList();
+            var querygifts = _context.Gift.AsQueryable().ToList();
+
+            var randomReciever = query.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+            if (randomReciever.UsersId != randomReciever.UsersId)
+            {
+                var model = new GiftInsertRequest
+                {
+                    FromUsersId = request.FromUsersId,
+                    ToUsersId = randomReciever.UsersId,
+                    DatePublished = DateTime.Now
+                };
+                Database.Gift entity = _mapper.Map<Database.Gift>(model);
+
+                _context.Gift.AddAsync(entity);
+                _context.SaveChangesAsync();
+                _mapper.Map<Model.Models.Gift>(entity);
+            }
+        }
+        public virtual async Task<bool> Delete()
+        {
+            var query = await _context.Gift.AsQueryable().ToListAsync();
+            try
+            {
+                _context.Gift.RemoveRange(query);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

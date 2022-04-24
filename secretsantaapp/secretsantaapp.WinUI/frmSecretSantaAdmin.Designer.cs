@@ -31,13 +31,14 @@ namespace secretsantaapp.WinUI
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvGiftPairs = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnGenerisi = new System.Windows.Forms.Button();
-            this.btnDodaj = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FromUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatePublished = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGenerisi = new System.Windows.Forms.Button();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.btnIzbrisi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGiftPairs)).BeginInit();
             this.SuspendLayout();
@@ -47,7 +48,7 @@ namespace secretsantaapp.WinUI
             this.groupBox1.Controls.Add(this.dgvGiftPairs);
             this.groupBox1.Location = new System.Drawing.Point(12, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(514, 186);
+            this.groupBox1.Size = new System.Drawing.Size(570, 186);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lista parova";
@@ -65,35 +66,9 @@ namespace secretsantaapp.WinUI
             this.dgvGiftPairs.Location = new System.Drawing.Point(3, 19);
             this.dgvGiftPairs.Name = "dgvGiftPairs";
             this.dgvGiftPairs.RowTemplate.Height = 25;
-            this.dgvGiftPairs.Size = new System.Drawing.Size(508, 164);
+            this.dgvGiftPairs.Size = new System.Drawing.Size(564, 164);
             this.dgvGiftPairs.TabIndex = 0;
             this.dgvGiftPairs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "GiftId";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            // 
-            // btnGenerisi
-            // 
-            this.btnGenerisi.Location = new System.Drawing.Point(265, 239);
-            this.btnGenerisi.Name = "btnGenerisi";
-            this.btnGenerisi.Size = new System.Drawing.Size(258, 23);
-            this.btnGenerisi.TabIndex = 1;
-            this.btnGenerisi.Text = "Generisi parove @secretsanta";
-            this.btnGenerisi.UseVisualStyleBackColor = true;
-            this.btnGenerisi.Click += new System.EventHandler(this.btnGenerisi_Click);
-            // 
-            // btnDodaj
-            // 
-            this.btnDodaj.Location = new System.Drawing.Point(15, 239);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(236, 23);
-            this.btnDodaj.TabIndex = 2;
-            this.btnDodaj.Text = "Dodaj uposlenike/Ucesnike";
-            this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -121,11 +96,48 @@ namespace secretsantaapp.WinUI
             this.DatePublished.HeaderText = "DatePublished";
             this.DatePublished.Name = "DatePublished";
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "GiftId";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            // 
+            // btnGenerisi
+            // 
+            this.btnGenerisi.Location = new System.Drawing.Point(203, 239);
+            this.btnGenerisi.Name = "btnGenerisi";
+            this.btnGenerisi.Size = new System.Drawing.Size(187, 23);
+            this.btnGenerisi.TabIndex = 1;
+            this.btnGenerisi.Text = "Generisi parove @secretsanta";
+            this.btnGenerisi.UseVisualStyleBackColor = true;
+            this.btnGenerisi.Click += new System.EventHandler(this.btnGenerisi_Click);
+            // 
+            // btnDodaj
+            // 
+            this.btnDodaj.Location = new System.Drawing.Point(15, 239);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(182, 23);
+            this.btnDodaj.TabIndex = 2;
+            this.btnDodaj.Text = "Dodaj uposlenike/Ucesnike";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // btnIzbrisi
+            // 
+            this.btnIzbrisi.Location = new System.Drawing.Point(396, 239);
+            this.btnIzbrisi.Name = "btnIzbrisi";
+            this.btnIzbrisi.Size = new System.Drawing.Size(187, 23);
+            this.btnIzbrisi.TabIndex = 3;
+            this.btnIzbrisi.Text = "Reset/Izbrisi listu";
+            this.btnIzbrisi.UseVisualStyleBackColor = true;
+            this.btnIzbrisi.Click += new System.EventHandler(this.btnIzbrisi_Click);
+            // 
             // frmSecretSantaAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 274);
+            this.ClientSize = new System.Drawing.Size(594, 274);
+            this.Controls.Add(this.btnIzbrisi);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.btnGenerisi);
             this.Controls.Add(this.groupBox1);
@@ -149,5 +161,6 @@ namespace secretsantaapp.WinUI
         private System.Windows.Forms.DataGridViewTextBoxColumn FromUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn ToUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatePublished;
+        private System.Windows.Forms.Button btnIzbrisi;
     }
 }

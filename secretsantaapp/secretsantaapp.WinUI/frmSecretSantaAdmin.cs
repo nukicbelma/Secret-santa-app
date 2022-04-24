@@ -50,5 +50,12 @@ namespace secretsantaapp.WinUI
             frm.ShowDialog();
             
         }
+
+        private async void btnIzbrisi_Click(object sender, EventArgs e)
+        {
+            await _giftService.Delete<Model.Models.Gift>();
+            await LoadGiftPairs();
+            MessageBox.Show("Uspjesno ste obrisali podatke");
+        }
     }
 }
