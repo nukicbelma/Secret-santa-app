@@ -33,12 +33,12 @@ namespace secretsantaapp.WinUI
             this.button1 = new System.Windows.Forms.Button();
             this.txtBroj = new System.Windows.Forms.TextBox();
             this.dgvUposlenici = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUposlenici)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -86,17 +86,6 @@ namespace secretsantaapp.WinUI
             this.dgvUposlenici.TabIndex = 6;
             this.dgvUposlenici.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgvUposlenici);
-            this.groupBox1.Location = new System.Drawing.Point(12, 88);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(390, 192);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Lista uposlenika";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "UsersId";
@@ -127,6 +116,17 @@ namespace secretsantaapp.WinUI
             this.Email.HeaderText = "Email";
             this.Email.Name = "Email";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgvUposlenici);
+            this.groupBox1.Location = new System.Drawing.Point(12, 88);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(390, 192);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Lista uposlenika";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
             // frmDodajUposlenike
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -137,6 +137,7 @@ namespace secretsantaapp.WinUI
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "frmDodajUposlenike";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj uposlenike @secretsanta";
             this.Load += new System.EventHandler(this.frmDodajSecretSantaAdmin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUposlenici)).EndInit();

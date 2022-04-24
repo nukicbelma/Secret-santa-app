@@ -142,6 +142,7 @@ namespace secretsantaapp.WinUI
             this.Controls.Add(this.btnGenerisi);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmSecretSantaAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin:: Secret santa app";
             this.Load += new System.EventHandler(this.frmSecretSantaAdmin_Load);
             this.groupBox1.ResumeLayout(false);

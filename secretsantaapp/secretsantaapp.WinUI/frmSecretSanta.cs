@@ -30,5 +30,11 @@ namespace secretsantaapp.WinUI
             MessageBox.Show($"Vas secret santa je uposlenik: {secretsanta.ToUsers}");
             
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            var frm = new frmConfirmation();
+            frm.ShowDialog();
+        }
     }
 }

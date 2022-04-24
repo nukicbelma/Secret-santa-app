@@ -32,6 +32,7 @@ namespace secretsantaapp.WinUI
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSecretSanta = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -64,15 +65,27 @@ namespace secretsantaapp.WinUI
             this.btnSecretSanta.UseVisualStyleBackColor = true;
             this.btnSecretSanta.Click += new System.EventHandler(this.btnSecretSanta_Click);
             // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Location = new System.Drawing.Point(12, 215);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(75, 23);
+            this.btnLogOut.TabIndex = 3;
+            this.btnLogOut.Text = "Logout";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
             // frmSecretSanta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 250);
+            this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnSecretSanta);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmSecretSanta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Secret Santa game";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -84,5 +97,6 @@ namespace secretsantaapp.WinUI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSecretSanta;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }
