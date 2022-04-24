@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using secretsantaapp.Database;
 
 namespace secretsantaapp.Migrations
 {
     [DbContext(typeof(SecretSantaContext))]
-    partial class SecretSantaContextModelSnapshot : ModelSnapshot
+    [Migration("20220424124330_migracija2")]
+    partial class migracija2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,20 +66,6 @@ namespace secretsantaapp.Migrations
                     b.HasKey("RolesId");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            RolesId = 1,
-                            RoleDuty = "Upravljanje sistemom",
-                            RoleName = "Admin"
-                        },
-                        new
-                        {
-                            RolesId = 2,
-                            RoleDuty = "Rad na sistemu",
-                            RoleName = "Uposlenik"
-                        });
                 });
 
             modelBuilder.Entity("secretsantaapp.Database.Users", b =>
@@ -130,60 +118,6 @@ namespace secretsantaapp.Migrations
                     b.HasKey("UsersId");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            UsersId = 1,
-                            Address = "Opine bb, Mostar",
-                            Email = "belma@example.com",
-                            FirstName = "Belma",
-                            LastName = "Nukic",
-                            PasswordHash = "yAOjokAWoWZ7AIriAcylq7elmVM=",
-                            PaswordSalt = "X4BjiFAZ4rgva59Rabp8hg==",
-                            Phone = "062147147",
-                            Status = false,
-                            Username = "belma"
-                        },
-                        new
-                        {
-                            UsersId = 2,
-                            Address = "Jukiceva 36, Sarajevo",
-                            Email = "admin@gmail.com",
-                            FirstName = "Admin",
-                            LastName = "Admin",
-                            PasswordHash = "ohXrySDeRILoN47ntKghKMuytn0=",
-                            PaswordSalt = "HJbj66wjuAzLNxDYlZ/T9A==",
-                            Phone = "063222111",
-                            Status = false,
-                            Username = "admin"
-                        },
-                        new
-                        {
-                            UsersId = 3,
-                            Address = "Sehovina bb, Mostar",
-                            Email = "uposlenik@gmail.com",
-                            FirstName = "Uposlenik",
-                            LastName = "Uposlenik",
-                            PasswordHash = "fhbMFkIaC3MAqqVJ3Pv5v+oJrr8=",
-                            PaswordSalt = "MUbkLKLde+Ym9kT9RJuaBw==",
-                            Phone = "063132233",
-                            Status = false,
-                            Username = "uposlenik"
-                        },
-                        new
-                        {
-                            UsersId = 4,
-                            Address = "Opine bb, Mostar",
-                            Email = "ema@gmail.com",
-                            FirstName = "Ema",
-                            LastName = "Bojcic",
-                            PasswordHash = "ySI1sfGjOEtRDU6tOzFMnyO0afM=",
-                            PaswordSalt = "BRl3JcN1K/rTRcjwEm4Z3Q==",
-                            Phone = "0631231323",
-                            Status = false,
-                            Username = "ema"
-                        });
                 });
 
             modelBuilder.Entity("secretsantaapp.Database.UsersRoles", b =>
@@ -209,36 +143,6 @@ namespace secretsantaapp.Migrations
                     b.HasIndex("UsersId");
 
                     b.ToTable("UsersRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            UsersRolesId = 1,
-                            PublishedDate = new DateTime(2022, 4, 24, 15, 7, 40, 807, DateTimeKind.Local).AddTicks(1615),
-                            RolesId = 1,
-                            UsersId = 2
-                        },
-                        new
-                        {
-                            UsersRolesId = 2,
-                            PublishedDate = new DateTime(2022, 4, 24, 15, 7, 40, 822, DateTimeKind.Local).AddTicks(7887),
-                            RolesId = 2,
-                            UsersId = 1
-                        },
-                        new
-                        {
-                            UsersRolesId = 3,
-                            PublishedDate = new DateTime(2022, 4, 24, 15, 7, 40, 822, DateTimeKind.Local).AddTicks(8289),
-                            RolesId = 2,
-                            UsersId = 3
-                        },
-                        new
-                        {
-                            UsersRolesId = 4,
-                            PublishedDate = new DateTime(2022, 4, 24, 15, 7, 40, 822, DateTimeKind.Local).AddTicks(8364),
-                            RolesId = 2,
-                            UsersId = 4
-                        });
                 });
 
             modelBuilder.Entity("secretsantaapp.Database.Gift", b =>

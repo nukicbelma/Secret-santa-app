@@ -50,12 +50,12 @@ namespace secretsantaapp.WinUI
                 {
                     //var admin = new frmSecretSantaAdmin();
                     //admin.ShowDialog();
-                    var uposlenik = new frmSecretSanta();
+                    var uposlenik = new frmSecretSantaUposlenik();
                     uposlenik.ShowDialog();
                 }
-                else if (User.UsersRoles.FirstOrDefault().RolesId == 3)
+                else if (User.UsersRoles.FirstOrDefault().RolesId == 2)
                 {
-                    var uposlenik = new frmSecretSanta();
+                    var uposlenik = new frmSecretSantaUposlenik();
                     uposlenik.ShowDialog();
                 }
                 Close();

@@ -19,5 +19,11 @@ namespace secretsantaapp.WinUI
         {
             Close();
         }
+
+        private void btnDa_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Pozdrav!");
+            DialogResult = DialogResult.Yes;
+        }
     }
 }

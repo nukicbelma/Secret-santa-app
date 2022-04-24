@@ -1,7 +1,7 @@
 ﻿
 namespace secretsantaapp.WinUI
 {
-    partial class frmSecretSanta
+    partial class frmSecretSantaUposlenik
     {
         /// <summary>
         /// Required designer variable.

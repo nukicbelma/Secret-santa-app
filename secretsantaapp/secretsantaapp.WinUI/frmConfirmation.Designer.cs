@@ -51,6 +51,7 @@ namespace secretsantaapp.WinUI
             this.btnDa.TabIndex = 1;
             this.btnDa.Text = "Da";
             this.btnDa.UseVisualStyleBackColor = true;
+            this.btnDa.Click += new System.EventHandler(this.btnDa_Click);
             // 
             // btnNe
             // 
@@ -72,7 +73,7 @@ namespace secretsantaapp.WinUI
             this.Controls.Add(this.label1);
             this.Name = "frmConfirmation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " ";
+            this.Text = "Logout";
             this.ResumeLayout(false);
             this.PerformLayout();
 

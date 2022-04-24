@@ -24,7 +24,13 @@ namespace secretsantaapp.WinUI
         private void btnLogout_Click(object sender, EventArgs e)
         {
             var frm = new frmConfirmation();
-            frm.ShowDialog();
+            if (frm.ShowDialog() == DialogResult.Yes)
+            {
+                Close();
+                LoggedInUser.LoggedUser = null;
+                var loginPonovo = new frmLogin();
+                loginPonovo.ShowDialog();
+            }
         }
     }
 }

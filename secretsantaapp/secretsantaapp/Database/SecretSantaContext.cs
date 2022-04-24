@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using secretsantaapp.Seeder;
 
 namespace secretsantaapp.Database
 {
@@ -107,6 +108,7 @@ namespace secretsantaapp.Database
                     .HasConstraintName("fk_usersid");
             });
 
+            modelBuilder.Seed();
             OnModelCreatingPartial(modelBuilder);
         }
 
