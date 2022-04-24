@@ -86,7 +86,8 @@ namespace secretsantaapp.Services
                 recieversLista.Add(user);
             }
 
-            for (int i = 0; i < kolicina; i++)
+            while(giversLista.Count()>1)
+            //for (int i = 0; i < kolicina; i++)
             {
                 var randomGiver = giversLista.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
                 var randomReciever = recieversLista.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
@@ -104,7 +105,6 @@ namespace secretsantaapp.Services
                     _context.Gift.Add(entity);
                     _context.SaveChanges();
                 }
-
             }
         }
         public virtual async Task<bool> Delete()

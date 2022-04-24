@@ -33,7 +33,6 @@ namespace secretsantaapp.Services
             var entity = _context.Users.Find(id);
 
             return _mapper.Map<Model.Models.Users>(entity);
-
         }
 
         public void Insert(UsersInsertRequest request)

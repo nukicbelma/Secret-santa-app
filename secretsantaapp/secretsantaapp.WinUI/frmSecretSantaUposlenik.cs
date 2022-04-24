@@ -21,14 +21,20 @@ namespace secretsantaapp.WinUI
 
         private async void btnSecretSanta_Click(object sender, EventArgs e)
         {
-            var model = new Model.Requests.GiftInsertRequest
-            {
-                FromUsersId = LoggedInUser.LoggedUser.UsersId
-            };
-            var santa=await _giftService.Get<List<Model.Models.Gift>>(model);
-            var secretsanta = santa.FirstOrDefault();
-            MessageBox.Show($"Vas secret santa je uposlenik: {secretsanta.ToUsers}");
-            
+                var model = new Model.Requests.GiftInsertRequest
+                {
+                    FromUsersId = LoggedInUser.LoggedUser.UsersId
+                };
+                var santa = await _giftService.Get<List<Model.Models.Gift>>(model);
+                var secretsanta = santa.FirstOrDefault();
+                if (secretsanta != null)
+                {
+                    MessageBox.Show($"Vas secret santa je uposlenik: {secretsanta.ToUsers}");
+                }
+                else
+                {
+                    MessageBox.Show($"Svi uposlenici su vec darovani!");
+                }
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
