@@ -38,7 +38,7 @@ namespace secretsantaapp.Controllers
         //    _service.Dodaj(request);
         //}
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public async Task<bool> Delete()
         {
             return await _service.Delete();

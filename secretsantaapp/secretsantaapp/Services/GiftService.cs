@@ -127,7 +127,7 @@ namespace secretsantaapp.Services
             var query = await _context.Gift.AsQueryable().ToListAsync();
             try
             {
-                _context.Gift.RemoveRange(query);
+                _context.Gift.RemoveRange(_context.Gift.Where(x => x.GiftId>0));
                 await _context.SaveChangesAsync();
                 return true;
             }
