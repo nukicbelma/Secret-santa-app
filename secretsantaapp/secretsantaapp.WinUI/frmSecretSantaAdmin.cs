@@ -37,11 +37,11 @@ namespace secretsantaapp.WinUI
         private async Task  LoadNoSanta()
         {
             var m = new Model.Requests.GiftSearchRequest { };
-            var result = await _giftService.GetNoSecretSanta<List<Model.Models.Users>>(m);
+            var result = await _giftService.GetNoSecretSanta<List<Model.Models.Users>>();
             if (result.Count > 0)
             {
-                var s = result.FirstOrDefault();
-                label2.Text = s.ToString();
+                var s = result.FirstOrDefault().ToString();
+                label2.Text = s;
             }
         }
         private async void frmSecretSantaAdmin_Load(object sender, EventArgs e)
@@ -55,6 +55,7 @@ namespace secretsantaapp.WinUI
             var model = new Model.Requests.GiftInsertRequest {};
             await _giftService.Insert<Model.Models.Gift>(model);
             await LoadGiftPairs();
+            await LoadNoSanta();
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
@@ -69,6 +70,7 @@ namespace secretsantaapp.WinUI
         {
             await _giftService.Delete<Model.Models.Gift>();
             await LoadGiftPairs();
+            await LoadNoSanta();
             MessageBox.Show("Uspjesno ste obrisali podatke");
         }
     }

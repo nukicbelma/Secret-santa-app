@@ -26,6 +26,7 @@ namespace secretsantaapp.Controllers
         {
             return _service.Get(search);
         }
+
         [HttpGet]
         [Route("GetNoSecretSanta")]
         public List<Model.Models.Users> GetNoSecretSanta([FromQuery] GiftSearchRequest search)

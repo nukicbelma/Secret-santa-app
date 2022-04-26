@@ -34,7 +34,7 @@ namespace secretsantaapp.WinUI
                     query = await searchRequest?.ToQueryString();
                 }
 
-                var list = await $"{endpoint}{_resource}?{query}"
+                var list = await $"{endpoint}{_resource}/GetNoSecretSanta/?{query}"
                    .WithBasicAuth(Username, Password).GetJsonAsync<T>();
 
                 return list;
