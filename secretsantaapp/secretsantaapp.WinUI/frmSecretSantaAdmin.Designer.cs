@@ -39,6 +39,8 @@ namespace secretsantaapp.WinUI
             this.btnGenerisi = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.btnIzbrisi = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGiftPairs)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +50,7 @@ namespace secretsantaapp.WinUI
             this.groupBox1.Controls.Add(this.dgvGiftPairs);
             this.groupBox1.Location = new System.Drawing.Point(12, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(570, 186);
+            this.groupBox1.Size = new System.Drawing.Size(602, 186);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lista parova";
@@ -66,7 +68,7 @@ namespace secretsantaapp.WinUI
             this.dgvGiftPairs.Location = new System.Drawing.Point(3, 19);
             this.dgvGiftPairs.Name = "dgvGiftPairs";
             this.dgvGiftPairs.RowTemplate.Height = 25;
-            this.dgvGiftPairs.Size = new System.Drawing.Size(564, 164);
+            this.dgvGiftPairs.Size = new System.Drawing.Size(596, 164);
             this.dgvGiftPairs.TabIndex = 0;
             this.dgvGiftPairs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -104,9 +106,9 @@ namespace secretsantaapp.WinUI
             // 
             // btnGenerisi
             // 
-            this.btnGenerisi.Location = new System.Drawing.Point(203, 239);
+            this.btnGenerisi.Location = new System.Drawing.Point(214, 279);
             this.btnGenerisi.Name = "btnGenerisi";
-            this.btnGenerisi.Size = new System.Drawing.Size(187, 23);
+            this.btnGenerisi.Size = new System.Drawing.Size(193, 23);
             this.btnGenerisi.TabIndex = 1;
             this.btnGenerisi.Text = "Generisi parove @secretsanta";
             this.btnGenerisi.UseVisualStyleBackColor = true;
@@ -114,9 +116,9 @@ namespace secretsantaapp.WinUI
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(15, 239);
+            this.btnDodaj.Location = new System.Drawing.Point(15, 279);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(182, 23);
+            this.btnDodaj.Size = new System.Drawing.Size(193, 23);
             this.btnDodaj.TabIndex = 2;
             this.btnDodaj.Text = "Dodaj uposlenike/Ucesnike";
             this.btnDodaj.UseVisualStyleBackColor = true;
@@ -124,19 +126,39 @@ namespace secretsantaapp.WinUI
             // 
             // btnIzbrisi
             // 
-            this.btnIzbrisi.Location = new System.Drawing.Point(396, 239);
+            this.btnIzbrisi.Location = new System.Drawing.Point(413, 279);
             this.btnIzbrisi.Name = "btnIzbrisi";
-            this.btnIzbrisi.Size = new System.Drawing.Size(187, 23);
+            this.btnIzbrisi.Size = new System.Drawing.Size(198, 23);
             this.btnIzbrisi.TabIndex = 3;
             this.btnIzbrisi.Text = "Reset/Izbrisi listu";
             this.btnIzbrisi.UseVisualStyleBackColor = true;
             this.btnIzbrisi.Click += new System.EventHandler(this.btnIzbrisi_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 247);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 15);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Korisnik bez para:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(120, 247);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 15);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "[/]";
+            // 
             // frmSecretSantaAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 274);
+            this.ClientSize = new System.Drawing.Size(626, 314);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnIzbrisi);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.btnGenerisi);
@@ -148,6 +170,7 @@ namespace secretsantaapp.WinUI
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGiftPairs)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -163,5 +186,7 @@ namespace secretsantaapp.WinUI
         private System.Windows.Forms.DataGridViewTextBoxColumn ToUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatePublished;
         private System.Windows.Forms.Button btnIzbrisi;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

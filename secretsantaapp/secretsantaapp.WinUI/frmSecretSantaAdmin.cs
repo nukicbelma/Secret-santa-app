@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,12 +31,23 @@ namespace secretsantaapp.WinUI
         private async Task LoadGiftPairs()
         {
             var model = new Model.Requests.GiftSearchRequest { };
-            var result = await _giftService.Get<List<Model.Models.Gift>>(model);
+            var result = await _giftService.Get<List<Model.Models.Gift>>(model); 
             dgvGiftPairs.DataSource = result;
+        }
+        private async Task  LoadNoSanta()
+        {
+            var m = new Model.Requests.GiftSearchRequest { };
+            var result = await _giftService.GetNoSecretSanta<List<Model.Models.Users>>(m);
+            if (result.Count > 0)
+            {
+                var s = result.FirstOrDefault();
+                label2.Text = s.ToString();
+            }
         }
         private async void frmSecretSantaAdmin_Load(object sender, EventArgs e)
         {
             await LoadGiftPairs();
+             await LoadNoSanta();
         }
 
         private async void btnGenerisi_Click(object sender, EventArgs e)
@@ -51,7 +63,8 @@ namespace secretsantaapp.WinUI
             frm.ShowDialog();
             
         }
-
+       
+       
         private async void btnIzbrisi_Click(object sender, EventArgs e)
         {
             await _giftService.Delete<Model.Models.Gift>();

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using secretsantaapp.Exceptions;
 using secretsantaapp.Model.Requests;
@@ -61,7 +62,49 @@ namespace secretsantaapp.Services
         {
             return !await _context.Gift.AnyAsync(i => i.ToUsersId == id);
         }
+        public List<Model.Models.Users> GetNoSecretSanta(GiftSearchRequest request)
+        {
+            //metoda se moze implementirati sa anyasny bool metodom pomenuta iznad
 
+            var queryGifts = _context.Gift.AsQueryable().ToList();
+            //ucitavanje svih darova-parova
+            var listGift = new List<Model.Models.Gift>();
+            foreach (var item in queryGifts)
+            {
+                var model = new Model.Models.Gift();
+                model.GiftId = item.GiftId;
+                model.FromUsersId = item.FromUsersId;
+                model.ToUsersId = item.ToUsersId;
+                model.DatePublished = DateTime.Now;
+                listGift.Add(model);
+            }
+            //ucitavanje svih usera
+            var queryUsers = _context.Users.AsQueryable().ToList();
+            var listUsers = _mapper.Map<List<Model.Models.Users>>(queryUsers);
+            //lista usera u listaGift
+            var UsersInGifts = new List<Model.Models.Users>();
+            foreach (var item in listGift)
+            {
+                var user = _context.Users.Find(item.FromUsersId);
+                var u = _mapper.Map<Model.Models.Users>(user);
+                UsersInGifts.Add(u);
+            }
+            var list3 = new List<Model.Models.Users>();
+            //ne radi except metona ni contains pa sam removala vec == u listi
+            foreach (var item in listUsers)
+            {
+                bool contains = false;
+                foreach (var g in UsersInGifts)
+                {
+                    if (item.UsersId == g.UsersId)
+                        contains = true;
+                }
+                if (!contains)
+                    list3.Add(item);
+            }
+            list3.Count();
+            return list3;
+        }
         public void Insert(GiftInsertRequest request)
         {
             var gifts = _context.Gift.AsQueryable().ToList();

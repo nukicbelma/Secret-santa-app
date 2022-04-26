@@ -10,7 +10,7 @@ namespace secretsantaapp.Services
     {
         public List<Model.Models.Gift> Get(GiftSearchRequest request);
         void Insert(GiftInsertRequest request);
-
+        public List<Model.Models.Users> GetNoSecretSanta(GiftSearchRequest request);
         public Task<bool> Delete();
     }
 }
