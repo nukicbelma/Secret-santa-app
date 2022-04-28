@@ -41,6 +41,7 @@ namespace secretsantaapp.WinUI
             this.btnIzbrisi = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGiftPairs)).BeginInit();
             this.SuspendLayout();
@@ -152,11 +153,22 @@ namespace secretsantaapp.WinUI
             this.label2.TabIndex = 5;
             this.label2.Text = "[/]";
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(15, 332);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.TabIndex = 6;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // frmSecretSantaAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(626, 314);
+            this.ClientSize = new System.Drawing.Size(626, 367);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnIzbrisi);
@@ -188,5 +200,6 @@ namespace secretsantaapp.WinUI
         private System.Windows.Forms.Button btnIzbrisi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

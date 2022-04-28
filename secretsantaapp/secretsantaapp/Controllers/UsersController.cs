@@ -22,6 +22,7 @@ namespace secretsantaapp.Controllers
             _service = service;
         }
 
+
         [HttpGet]
         [AllowAnonymous]
         [Route("Authenticiraj/{username},{password}")]

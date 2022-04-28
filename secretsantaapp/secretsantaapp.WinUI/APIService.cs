@@ -114,6 +114,7 @@ namespace secretsantaapp.WinUI
 
             return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
         }
+
         public async Task<T> Update<T>(int id, object request)
         {
             try
